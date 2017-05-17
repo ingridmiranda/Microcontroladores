@@ -1,16 +1,35 @@
 1. Projete o hardware necessário para o MSP430 controlar um motor DC de 12V e 4A. Utilize transistores bipolares de junção (TBJ) 
 com Vbe = 0,7 V, beta = 100 e Vce(saturação) = 0,2 V. Além disso, considere que Vcc = 3 V para o MSP430, e que este não pode fornecer
 mais do que 10 mA por porta digital.
+Ic = beta*Ib
+Rb = (Vcc - Vbe)/Ib
+4 = 100Ib => Ib = 40mA - o máximo é 10mA por porta digital
+Utilizando a solução Darlington pair:
+Ic = Ib*beta²
+Rb = (Vcc - 2Vbe)/Ib
+Aplicando valores:
+4 = Ib*(100)² => Ib = 0.4mA
+Rb = (3 - 2*0.7)/0.0004 => Rb = 4000 ohm = 4 kohm
 
 2. Projete o hardware necessário para o MSP430 controlar um motor DC de 10V e 1A. Utilize transistores bipolares de junção (TBJ) 
 com Vbe = 0,7 V e beta = 120. Além disso, considere que Vcc = 3,5 V para o MSP430, e que este não pode fornecer mais do que 10 mA por 
 porta digital.
+Ic = beta*Ib
+1 = 120*Ib => Ib = 8mA
+Rb = (Vcc - Vbe)/Ib
+Rb = (3.5 - 2*0.7)/0.008 => Rb = 262.5 ohm
 
 3. Projete o hardware utilizado para controlar 6 LEDs utilizando charlieplexing. Apresente os pinos utilizados no MSP430 e os LEDs, 
 nomeados L1-L6.
+Por Charlieplexing, com N pinos controla-se N(N-1) leds
+Para 6 leds, utiliza-se 3 pinos: P1.0, P1.1 e P1.2
+Na saída de cada pino, usa-se um resistor de 270 ohm. E entre dois pinos coloca-se um diodo em ordem direta e um diodo em ordem reversa.
+Para escolher o led a ser acesso observa-se o diodo associado.
+E define-se um pino para a tensão, um para o terra e outro para a entrada digital.
 
 4. Defina a função void main(void){} para controlar 6 LEDs de uma árvore de natal usando o hardware da questão anterior. 
 Acenda os LEDs de forma que um ser humano veja todos acesos ao mesmo tempo.
+
 
 5. Defina a função void main(void){} para controlar 6 LEDs de uma árvore de natal usando o hardware da questão 3. 
 Acenda os LEDs de forma que um ser humano veja os LEDs L1 e L2 acesos juntos por um tempo, depois os LEDs L3 e L4 juntos, 
