@@ -108,5 +108,87 @@ corresponderem aos LEDs A-G, e que estes LEDs possuem resistores externos para l
        |   |
  	    ---  ==> D
 
+#define DISPA LED0
+#define DISPB LED1
+#define DISPC LED2
+#define DISPD LED3
+#define DISPE LED4
+#define DISPF LED5
+#define DISPG LED6
+#define DISPS (DISPA + DISPB + DISPC + DISPD + DISPE + DISPF + DISPG)
+#define DISPS_CLR P1OUT &= CHPXS
+
+Void disp_on (char DISP_ON)
+P1OUT &= CHPXS
+P1DIR &= CHPXS
+P1DIR |= DISP_ON
+P1OUT |= DISP_ON
+}
+
+int main (void)
+	WDTCTL = WDTPW + WDTHOLD;
+	
+char ent1 (DISPB, DISPC)
+char ent2 (DISPA, DISPB, DISPD, DISPE, DISPG)
+char ent3 (DISPA, DISPB, DISPC, DISPD, DISPG)	  	    
+char ent4 (DISPB, DISPC, DISPF, DISPG)
+char ent5 (DISPA, DISPC, DISPD, DISPF, DISPG)
+char ent6 (DISPA, DISPC, DISPD, DISPE, DISPF, DISPG)
+char ent7 (DISPA, DISPB, DISPC)	  	    
+char ent8 (DISPA, DISPB, DISPC, DISPD, DISPE, DISPF, DISPG)
+char ent9 (DISPA, DISPB, DISPC, DISPD, DISPF, DISPG)	   
+char entA (DISPA, DISPB, DISPC, DISPE, DISPF, DISPG)
+char entB (DISPA, DISPB, DISPC, DISPD, DISPE, DISPF, DISPG)
+char entC (DISPA, DISPD, DISPE, DISPF)
+char entD (DISPA, DISPB, DISPC, DISPD, DISPE, DISPF)
+char entE (DISPA, DISPD, DISPE, DISPF, DISPG)
+char entF (DISPA, DISPE, DISPF, DISPG)
+
+while(1){
+for (i = 0; i<0xffff, i++){
+disp_on(ent1());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent2());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent3());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent4());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent5());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent6());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent7());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent8());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(ent9());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(entA());
+}for (i = 0; i<0xffff, i++){
+disp_on(entB());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(entC());
+}for (i = 0; i<0xffff, i++){
+disp_on(entD());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(entE());
+}
+for (i = 0; i<0xffff, i++){
+disp_on(entF());
+}
+
+
 7. Multiplexe 2 displays de 7 segmentos para apresentar a seguinte sequência em loop:
 	00 - 11 - 22 - 33 - 44 - 55 - 66 - 77 - 88 - 99 - AA - BB - CC - DD - EE - FF
