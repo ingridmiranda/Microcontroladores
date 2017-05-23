@@ -146,49 +146,87 @@ char entF (DISPA, DISPE, DISPF, DISPG)
 
 while(1){
 for (i = 0; i<0xffff, i++){
-disp_on(ent1());
+disp_on(ent1[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent2());
+disp_on(ent2[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent3());
+disp_on(ent3[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent4());
+disp_on(ent4[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent5());
+disp_on(ent5[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent6());
+disp_on(ent6[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent7());
+disp_on(ent7[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent8());
+disp_on(ent8[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(ent9());
+disp_on(ent9[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(entA());
-}for (i = 0; i<0xffff, i++){
-disp_on(entB());
+disp_on(entA[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(entC());
-}for (i = 0; i<0xffff, i++){
-disp_on(entD());
+disp_on(entB[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(entE());
+disp_on(entC[]);
 }
 for (i = 0; i<0xffff, i++){
-disp_on(entF());
+disp_on(entD[]);
+}
+for (i = 0; i<0xffff, i++){
+disp_on(entE[]);
+}
+for (i = 0; i<0xffff, i++){
+disp_on(entF[]);
 }
 
 
 7. Multiplexe 2 displays de 7 segmentos para apresentar a seguinte sequência em loop:
 	00 - 11 - 22 - 33 - 44 - 55 - 66 - 77 - 88 - 99 - AA - BB - CC - DD - EE - FF
+
+Void disp_on (char DISP_ON)
+P1OUT &= CHPXS
+P1DIR &= CHPXS
+P1DIR |= DISP_ON
+P1OUT |= DISP_ON
+}
+
+int main (void)
+	WDTCTL = WDTPW + WDTHOLD;
+	
+char ent0 (DISPA, DISPB, DISPC, DISPD, DISPE, DISPF)
+	  (DISPB, DISPC)
+	  (DISPA, DISPB, DISPD, DISPE, DISPG)
+	  (DISPA, DISPB, DISPC, DISPD, DISPG)	  	    
+          (DISPB, DISPC, DISPF, DISPG)
+	  (DISPA, DISPC, DISPD, DISPF, DISPG)
+	  (DISPA, DISPC, DISPD, DISPE, DISPF, DISPG)
+	  (DISPA, DISPB, DISPC)	  	    
+          (DISPA, DISPB, DISPC, DISPD, DISPE, DISPF, DISPG)
+	  (DISPA, DISPB, DISPC, DISPD, DISPF, DISPG)	   
+	  (DISPA, DISPB, DISPC, DISPE, DISPF, DISPG)
+	  (DISPA, DISPB, DISPC, DISPD, DISPE, DISPF, DISPG)
+	  (DISPA, DISPD, DISPE, DISPF)
+	  (DISPA, DISPB, DISPC, DISPD, DISPE, DISPF)
+	  (DISPA, DISPD, DISPE, DISPF, DISPG)
+	  (DISPA, DISPE, DISPF, DISPG)
+
+
+for (i=0; i<0xffff; i++){
+	for(j=0; j<17 j++){
+		for(k=0; k<7, k++){
+		disp_on1(ent[j][k]);
+		disp_on2(ent[j][k]);
+		}}
+}
