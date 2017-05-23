@@ -26,14 +26,73 @@ Para 6 leds, utiliza-se 3 pinos: P1.0, P1.1 e P1.2
 Na saída de cada pino, usa-se um resistor de 270 ohm. E entre dois pinos coloca-se um diodo em ordem direta e um diodo em ordem reversa.
 Para escolher o led a ser acesso observa-se o diodo associado.
 E define-se um pino para a tensão, um para o terra e outro para a entrada digital.
+#define CHPX1 BIT0
+#define CHPX2 BIT1
+#define CHPX3 BIT6
+#define CHPXS (CHPX1 + CHPX2 + CHPX3) 
+#define CHPX_CLR P1OUT &= CHPXS // zerar
+
 
 4. Defina a função void main(void){} para controlar 6 LEDs de uma árvore de natal usando o hardware da questão anterior. 
 Acenda os LEDs de forma que um ser humano veja todos acesos ao mesmo tempo.
-
+Void charlie_on (char CHPX_ON 
+              	 char CHPX_OUT)
+P1OUT &= CHPXS
+P1DIR &= CHPXS
+P1DIR |= CHPX_OUT
+P1OUT |= CHPX_ON
+}
 
 5. Defina a função void main(void){} para controlar 6 LEDs de uma árvore de natal usando o hardware da questão 3. 
 Acenda os LEDs de forma que um ser humano veja os LEDs L1 e L2 acesos juntos por um tempo, depois os LEDs L3 e L4 juntos, 
 e depois os LEDs L5 e L6 juntos.
+#define CHPX1 BIT0
+#define CHPX2 BIT1
+#define CHPX3 BIT6
+#define CHPXS (CHPX1 + CHPX2 + CHPX3) 
+#define CHPX_CLR P1OUT &= CHPXS // zerar
+
+Void charlie_on (char CHPX_ON 
+              	 char CHPX_OUT)
+P1OUT &= CHPXS
+P1DIR &= CHPXS
+P1DIR |= CHPX_OUT
+P1OUT |= CHPX_ON
+}
+
+int main (void)
+	WDTCTL = WDTPW + WDTHOLD;
+
+Char ent1 ( CHPX1
+	    CHPX2
+	    CHPX2
+	    CHPX3
+	    CHPX1
+	    CHPX3)
+
+Char ent2 ( CHPX2
+	    CHPX1
+            CHPX3
+	    CHPX2
+            CHPX3
+  	    CHPX1)
+
+while(1){
+for (i = 0; i<0xffff, i++){	{   
+charlie(ent1[0], ent2[0]);
+charlie(ent1[1], ent2[1]);
+}   
+for (i=0; i<0xffff; i++){
+charlie(ent1[2], ent2[2]);
+charlie(ent1[3], ent2[3]);
+}
+for (i=0; i<0xffff; i++){
+charlie(ent1[4], ent2[4]);
+charlie(ent1[5], ent2[5]);
+}
+
+}
+
 
 6. Defina a função void EscreveDigito(volatile char dig); que escreve um dos dígitos 0x0-0xF em um único display de 7 segmentos 
 via porta P1, baseado na figura abaixo. Considere que em outra parte do código os pinos P1.0-P1.6 já foram configurados para 
