@@ -172,7 +172,8 @@ for(b=0; b<8; b++){
 	atraso(1);
 	m *=2;
 	}
-P2OUT
+P2OUT &= ~BIT0;
+atraso(1);
 }
 
 8. Faça o programa completo que lê um byte de entrada serialmente via pino P2.0 e transmite este byte via porta P1.
